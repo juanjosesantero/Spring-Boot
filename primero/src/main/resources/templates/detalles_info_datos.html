@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"> 
+    <!-- Agregamos el espacio de nombres de Thymeleaf para poder usar sus atributos en la plantilla -->
+    <!-- Utilizar el espacio de nombres de Thymeleaf para expresiones y atrributos personalizados -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${Titulo}">Detalles de la Información</title>
+</head>
+<body>
+    <h1 th:text="${Titulo}"></h1>
+    <h2 th:text="${ip}"></h2>
+    <p>Esta es la página de detalles de la información.</p>
+
+    
+</body>
+</html>
