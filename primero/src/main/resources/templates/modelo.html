@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org"> 
+    <!-- Agregamos el espacio de nombres de Thymeleaf para poder usar sus atributos en la plantilla -->
+        <!-- Utilizar el espacio de nombres de Thymeleaf para expresiones y atrributos personalizados -->
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title th:text="${Titulo}">Detalles del empleado</title>
+        </head>
+        <body>
+        <h1>Información de empleado</h1>
+            <ul>
+                <li><strong>ID:</strong> <span th:text="${Empleado.id}"></span></li>
+                <li><strong>Nombre:</strong> <span th:text="${Empleado.nombre}"></span></li>
+                <li><strong>Apellido:</strong> <span th:text="${Empleado.apellido}"></span></li>
+                <li><strong>Puesto:</strong> <span th:text="${Empleado.puesto}"></span></li>
+                <li><strong>Edad:</strong> <span th:text="${Empleado.edad}"></span></li>
+                <li><strong>Teléfono:</strong> <span th:text="${Empleado.telefono}"></span></li>
+               
+        </ul>
