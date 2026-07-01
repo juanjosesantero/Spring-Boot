@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.omeg.primero.models.Empleado;
+import com.omeg.primero.models.dto.ClaseDTO;
 
 
 @RestController // Handler rest en vez de handler que seria un conttroller normal
@@ -46,6 +47,13 @@ public Map<String, Object> objeto(){
         return respuesta;
     }
 
+@RequestMapping(path="/DTO", method=RequestMethod.GET)
+public ClaseDTO detalleMap(){
 
+        ClaseDTO usuario1= new ClaseDTO();
+        usuario1.setTitulo("administrador");
+        usuario1.setUsuario("Informaticconfig");
+        return usuario1;
+    }
 
 }
