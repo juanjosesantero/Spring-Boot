@@ -33,7 +33,7 @@ public class EjemploController {
     }
 
     @ModelAttribute("Empleados")    //Nombre de la vista a cargar datos
-    // Model atriobute para agregar atributos al modelo que se utilizarán en la vista. En este caso, se está agregando una lista de empleados con el nombre "Empleados".
+    // Model atribute para agregar atributos al modelo que se utilizarán en la vista. En este caso, se está agregando una lista de empleados con el nombre "Empleados".
     public List<Empleado> ListaEmpleados(){
         return Arrays.asList(
             new Empleado(002, "Maria", "Gonzalez", "Analista", 28, 123456789,"Calle 2 Nº 3"),
