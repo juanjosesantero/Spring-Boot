@@ -3,7 +3,6 @@ package com.omeg.primero.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +37,7 @@ public class EjemploRestController {
 @RequestMapping(path="/objeto", method=RequestMethod.GET)
 public Map<String, Object> objeto(){
 
-        Empleado empleado1= new Empleado(001,"Juan", "Rodriguez", "Desarrollador", 30, 123456789);
+        Empleado empleado1= new Empleado(001,"Juan", "Rodriguez", "Desarrollador", 30, 123456789,"Calle 1 Nº 2");
         Map<String, Object> respuesta = new HashMap<>();
         
         

@@ -7,6 +7,22 @@ public class Empleado {
     private String puesto;
     private int edad;   
     private int telefono;   
+    private String direccion;
+    public Empleado(int id, String nombre, String apellido, String puesto, int edad, int telefono, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.puesto = puesto;
+        this.edad = edad;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -44,13 +60,4 @@ public class Empleado {
         this.id = id;
     }
    
-    public Empleado(int id, String nombre, String apellido, String puesto, int edad, int telefono ) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.puesto = puesto;
-        this.edad = edad;
-        this.telefono = telefono;
-       
-    }   
 }
