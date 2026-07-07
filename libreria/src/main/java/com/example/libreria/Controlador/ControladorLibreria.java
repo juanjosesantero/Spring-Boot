@@ -6,6 +6,7 @@ import com.example.libreria.Servicio.ServicioLibro;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,21 @@ public class ControladorLibreria {
     public ResponseEntity<Libro> buscaLibro(@PathVariable long id){
         return repoLibro.BuscaID(id)
                 .map(ResponseEntity::ok)    // Si devuelve un ok el servidor
-                .orElse(ResponseEntity.notFound().build()); // Si no devuelve una respuesta con 404
+                .orElse(ResponseEntity.notFound().build()); // Si no devuelve una respuesta con 404, se devuelve un builder, por eso el .build
                 //Response Entity
+    }
+
+    @GetMapping("/clone")
+    public String probarClone(){
+        Libro l = new Libro(1L,"Miguel de Cervantes", "El Quijote", LocalDate.of(1605, 1, 16));
+        Libro copia= null;
+        try {
+            copia = l.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        copia.setTitulo("Copia Prueba");
+        copia.setIdLibro(8);
+        return  "Original: "+ l.toString()+ "\n"+"\ncopia: "+ copia.toString();
     }
 }
