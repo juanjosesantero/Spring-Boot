@@ -7,6 +7,7 @@ import com.hibernate.ferreteria.repositorio.RepoArticulo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class ArticuloServicio {
 
         if(art.isPresent()){
             Articulo articulo=art.get();
-            articulo.setId(dto.getId());
+            //articulo.setId(dto.getId());
             articulo.setNombreArticulo(dto.getNombreArticulo());
             articulo.setExistencia(dto.getExistencia());
             articulo.setPrecio(dto.getPrecio());
@@ -47,6 +48,15 @@ public class ArticuloServicio {
         if(repoArticulo.existsById(id)){
             repoArticulo.deleteById(id);
             return "Articulo eliminado con exito";
+        }
+        else
+            throw new RuntimeException("No existe el articulo con el id: " + id);
+    }
+
+    public ArticuloDTO buscarPorId(Long id) {
+        Optional<Articulo> art = repoArticulo.findById(id);
+        if(art.isPresent()){
+            return ArticuloMapper.toDto(art.get());
         }
         else
             throw new RuntimeException("No existe el articulo con el id: " + id);

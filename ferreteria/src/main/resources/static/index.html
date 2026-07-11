@@ -102,7 +102,7 @@
     function actualizarProducto() {
         const id = $("#updId").val();
         const dto = {
-            nombrearticulo: $("#updNombre").val(),
+            nombreArticulo: $("#updNombre").val(),
             precio: $("#updPrecio").val(),
             existencia: $("#updExistencia").val()
         };
@@ -153,7 +153,7 @@
     // INSERTAR PRODUCTO
     function insertarProducto() {
         const dto = {
-            nombrearticulo: $("#insNombre").val(),
+            nombreArticulo: $("#insNombre").val(),
             precio: $("#insPrecio").val(),
             existencia: $("#insExistencia").val()
         };
@@ -185,7 +185,7 @@
             html += `
                 <tr>
                     <td>${a.id}</td>
-                    <td>${a.nombrearticulo}</td>
+                    <td>${a.nombreArticulo}</td>
                     <td>${a.precio}</td>
                     <td>${a.existencia}</td>
                 </tr>
