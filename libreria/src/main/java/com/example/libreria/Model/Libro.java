@@ -51,7 +51,7 @@ public class Libro implements  Cloneable{
                 '}';
     }
 
-    public Libro(long idLibro, String titulo, String autor, LocalDate fechaPublicacion) {
+    public Libro(long idLibro, String autor, String titulo, LocalDate fechaPublicacion) {
         this.titulo = titulo;
         this.idLibro = idLibro;
         this.autor = autor;

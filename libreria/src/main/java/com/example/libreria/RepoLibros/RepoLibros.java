@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository // Anotacion para que el sistema verifique que este será el repositorio
-public class RepoLibros {
+public class RepoLibros implements RepoLibroI{
     private final List<Libro> libros= new ArrayList<>();    // Final para referencia inmutable
 
     public RepoLibros() {
@@ -28,5 +28,28 @@ public class RepoLibros {
         return libros.stream()
                 .filter(libros1->libros1.getIdLibro()==idLibro)
                 .findFirst();
+    }
+
+    @Override
+    public List<Libro> findAll() {
+        return libros;
+    }
+
+    @Override
+    public Optional<Libro> findById(long id) {
+        return libros.stream().filter(libro -> libro.getIdLibro()==id).findFirst();
+    }
+
+    @Override
+    public Libro save(Libro libro) {
+    findById(libro.getIdLibro()).ifPresent(existing -> libros.remove(existing));
+    libros.add(libro);
+    // Remplaza
+        return libro;
+    }
+
+    @Override
+    public void deleteById(long id) {
+        findById(id).ifPresent(libros::remove);
     }
 }
