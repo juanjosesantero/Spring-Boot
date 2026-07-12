@@ -1,0 +1,1 @@
+Duplicar objetos sin crear otro de manera manual. S e usa a la hora de DTO, configuraciones temporales..

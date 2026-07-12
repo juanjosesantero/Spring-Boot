@@ -1,0 +1,10 @@
+Permiten interceptar peticiones antes y despues de recibirse por un controlador.
+Para logs, autenticacion, modificar solicitudes/respuestas y medir tiempos de respuesta
+
+```java
+ @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,Object handler) {
+        System.out.println("Interceptando peticion ..." + request.getRequestURI());
+        return true;
+    }
+```

@@ -1,0 +1,1 @@
+Buena practica clase controlador,dtomentity,mapper,repositorio y servicio

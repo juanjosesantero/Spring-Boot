@@ -1,0 +1,54 @@
+Framework para autenticacion y control de acceso. Maneja inicio de sesion, permisos, roles y proteccion contra ataques comunes
+
+# Para que
+Autenticar usuarios, autorizar rrexcursos, proteger endpoints, encriptar contraseñas o gestionar sesiones de usuario
+
+La logica se mantiene en un mismo lugar, flexible
+
+# Importancia de configurar
+Accesos no autorizados, falsificacion de peticiones()CSRF, robo de datos y proteccion contra fuerza bruta
+
+# Componentes
+- SecurityFilterChain, cadena de filtros de seguridad para aplicar peticiones entrantes
+-AuthenticationManager, responsable de procesar solicitud de autenticacion y dar resultado
+- UserDetailsService
+- PasswordEncoder
+- Roles y Authorities
+
+
+# Que teniamos en mvn
+starter jpa, traducir objetos java a tablas sql
+lobok, eliminar codigo repetitivo + constructor+set/getter
+devtool, recarga automatica de la aplicacion al hacer cambios
+mysqlconnector, conectar spring a una bd mysql
+starter-web, crear controladores rest y manejar hrrp incluye jackson, un servidor Tomcat y validacion de rutas http
+# Añadir con security
+En pom
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+
+# Usar
+En authoritation username user y clave la que te genere o...
+
+Se puede generar una clave a un usuario 
+```Markdown
+
+#Spring Security
+spring.security.user.password=aa731753-e4cc-49a1-99ca-085637c32216
+spring.security.user.name=omeg
+```
+
+# Security config
+como se autentican, permisos y filtros de seguridad. Que rutas son publicas o requieren login
+@EnableWebSecurity, habilita caracteristicas de spring security para que SecurityFilterChain sustituya la configuracion por defecto
+
+PasswordEncoder, compara y almacena contraseñas con este metodo
+AuthenticationManager, se encarga de autenticar
+
+## Segundo video
+
+Control de usuarios mas configurar rutas publicas y protegidas

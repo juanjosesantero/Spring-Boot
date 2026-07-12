@@ -14,6 +14,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final UsuarioService usuarioService;
+    public SecurityConfig(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
+
     @Bean
     public PasswordEncoder codificaPass() {
         return new BCryptPasswordEncoder();
@@ -26,16 +31,20 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityChain(HttpSecurity http,AuthenticationManager authManager) throws Exception {
 
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/**").hasAnyRole("ADMIN","USER")
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults());
-
-        return http.build();
+                .authenticationManager(authManager) //Inyecta autenticacion, procesa intento, valida usuario y clave
+                .userDetailsService(usuarioService) //Permite que la autenticacion pueda ver detalles de la bd
+                .formLogin(form -> form.permitAll())    // Pagina de formulario por defecto que permite que todos puedan entrar a esa pero sin autenticacion
+                .httpBasic(basic->{});
+        return http.build();    // Construir desde httpSecurity
     }
 }
     //Deshabilita una proteccion de seguridad que puede bloquearnos
